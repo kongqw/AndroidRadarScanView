@@ -70,9 +70,9 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 | 属性 | 类型 | 描述 |
 | --- | ----| ---- |
 | radarScanTime | integer | 设置雷达扫描一圈时间 |
-| radarBackgroundLinesNumber | integer | 设置雷达背景圆圈数 |
-| radarBackgroundLinesWidth | float | 设置底盘圆圈宽度 |
-| radarBackgroundLinesColor | color | 设置雷达圆圈颜色 |
+| radarBackgroundLinesNumber | integer | 设置雷达背景圆圈数量 |
+| radarBackgroundLinesWidth | float | 设置雷达背景圆圈宽度 |
+| radarBackgroundLinesColor | color | 设置雷达背景圆圈颜色 |
 | radarBackgroundColor | color | 设置雷达背景颜色 |
 | radarScanColor | color | 设置雷达扫描颜色 |
 | radarScanAlpha | integer | 设置雷达扫描透明度 |
@@ -86,11 +86,11 @@ radarScanView
         .setRadarScanTime(2000)
         // 设置雷达背景颜色
         .setRadarBackgroundColor(Color.WHITE)
-        // 设置雷达背景圆圈数
+        // 设置雷达背景圆圈数量
         .setRadarBackgroundLinesNumber(4)
-        // 设置底盘圆圈宽度
+        // 设置雷达背景圆圈宽度
         .setRadarBackgroundLinesWidth(2)
-        // 设置雷达圆圈颜色
+        // 设置雷达背景圆圈颜色
         .setRadarBackgroundLinesColor(Color.GRAY)
         // 设置雷达扫描颜色
         .setRadarScanColor(0xFFAAAAAA)
