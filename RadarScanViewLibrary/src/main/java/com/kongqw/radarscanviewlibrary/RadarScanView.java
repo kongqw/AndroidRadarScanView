@@ -9,8 +9,10 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.SweepGradient;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -19,6 +21,7 @@ import android.view.View;
  */
 public class RadarScanView extends View {
 
+    private static final String TAG = "RadarScanView";
     // 默认大小
     private static final int DEFAULT_SIZE = 200;
     // 刷新界面频率 黄金16毫秒
@@ -164,7 +167,6 @@ public class RadarScanView extends View {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-
         if (changed) {
             // 控件宽度
             int measuredWidth = getMeasuredWidth();
@@ -179,7 +181,25 @@ public class RadarScanView extends View {
             mScanRadius = (mViewRadius - mRadarBackgroundLinesPaint.getStrokeWidth() / 2);
             // 中心点
             mCenterPoint.set(measuredWidth / 2, measuredHeight / 2);
+
+            startScan();
         }
+    }
+
+    @Override
+    protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
+        super.onVisibilityChanged(changedView, visibility);
+        if (VISIBLE == visibility) {
+            startScan();
+        } else {
+            stopScan();
+        }
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        stopScan();
+        super.onDetachedFromWindow();
     }
 
     /**
@@ -233,21 +253,6 @@ public class RadarScanView extends View {
         canvas.concat(mMatrix);
         canvas.drawCircle(mCenterPoint.x, mCenterPoint.y, scanRadius, mRadarScanPaint);
     }
-
-    /*
-     * 1. - - 设置底盘圆圈个数
-     * 2. - - 设置底盘圆圈宽度
-     * 3. - - 设置底盘圆圈颜色
-     * 3. - - 设置底盘背景色
-     *
-     * 4. - - 扫描区域颜色
-     * 4. - - 扫描区域透明度
-     *
-     * 5. - 转一圈的时间
-     *
-     * 6. - 开始扫描
-     * 7. - 结束扫描
-     */
 
     /**
      * 设置雷达背景圆圈数
@@ -361,6 +366,7 @@ public class RadarScanView extends View {
      */
     public void startScan() {
         stopScan();
+        Log.i(TAG, "startScan: ");
         handler.post(run);
     }
 
@@ -368,6 +374,7 @@ public class RadarScanView extends View {
      * 结束扫描
      */
     public void stopScan() {
+        Log.i(TAG, "stopScan: ");
         handler.removeCallbacks(run);
     }
 }

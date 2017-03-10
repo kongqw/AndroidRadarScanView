@@ -17,13 +17,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         radarScanView = (RadarScanView) findViewById(R.id.radarScanView);
-        radarScanView.setRadarScanTime(2000)
-                .setRadarBackgroundColor(Color.WHITE)
-                .setRadarBackgroundLinesNumber(4)
-                .setRadarBackgroundLinesWidth(2)
-                .setRadarBackgroundLinesColor(Color.GRAY)
-                .setRadarScanColor(0xFFAAAAAA)
-                .setRadarScanAlpha(0xAA);
+//        radarScanView
+//                // 设置雷达扫描一圈时间
+//                .setRadarScanTime(2000)
+//                // 设置雷达背景颜色
+//                .setRadarBackgroundColor(Color.WHITE)
+//                // 设置雷达背景圆圈数
+//                .setRadarBackgroundLinesNumber(4)
+//                // 设置底盘圆圈宽度
+//                .setRadarBackgroundLinesWidth(2)
+//                // 设置雷达圆圈颜色
+//                .setRadarBackgroundLinesColor(Color.GRAY)
+//                // 设置雷达扫描颜色
+//                .setRadarScanColor(0xFFAAAAAA)
+//                // 设置雷达扫描透明度
+//                .setRadarScanAlpha(0xAA);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // radarScanView.startScan();
     }
 
     public void startScan(View view) {
