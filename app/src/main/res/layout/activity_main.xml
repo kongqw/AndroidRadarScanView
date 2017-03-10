@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kongqw.androidradarscanview.MainActivity">
+
+    <com.kongqw.radarscanviewlibrary.RadarScanView
+        android:id="@+id/radarScanView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        app:radarBackgroundColor="@color/colorAccent"
+        app:radarBackgroundLinesColor="@color/colorPrimaryDark"
+        app:radarBackgroundLinesNumber="3"
+        app:radarBackgroundLinesWidth="5.5"
+        app:radarScanAlpha="0x33"
+        app:radarScanColor="#FF000000"
+        app:radarScanTime="5000" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:onClick="startScan"
+        android:text="开始扫描" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:onClick="stopScan"
+        android:text="停止扫描" />
+
+</RelativeLayout>
